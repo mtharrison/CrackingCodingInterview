@@ -10,15 +10,15 @@ int main(int argc, char const *argv[])
 {
 	// HashmapSimple
 
-    // HashmapSimple* hashmap = HashmapSimpleNew();
+    HashmapSimple* hashmap = HashmapSimpleNew();
     
-    // HashmapSimpleSet(hashmap, "First Name", "Matt");
-    // HashmapSimpleSet(hashmap, "Last Name", "Harrison");
+    HashmapSimpleSet(hashmap, "First Name", "Matt");
+    HashmapSimpleSet(hashmap, "Last Name", "Harrison");
 
-    // printf("%s\n", HashmapSimpleGet(hashmap, "First Name"));
-    // printf("%s\n", HashmapSimpleGet(hashmap, "Last Name"));
+    printf("%s\n", HashmapSimpleGet(hashmap, "First Name"));
+    printf("%s\n", HashmapSimpleGet(hashmap, "Last Name"));
 
-    // free(hashmap);
+    free(hashmap);
 
     // HashmapLinkedList
 
@@ -29,6 +29,8 @@ int main(int argc, char const *argv[])
 
     printf("%s\n", HashmapLinkedListGet(hashmap2, "First Name"));
     printf("%s\n", HashmapLinkedListGet(hashmap2, "Last Name"));
+
+    free(hashmap2);
     
     return 0;
 }
