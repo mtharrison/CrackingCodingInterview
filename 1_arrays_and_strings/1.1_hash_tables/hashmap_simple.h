@@ -1,7 +1,11 @@
 // Cracking the Coding Interview
 // Chapter 1 - Arrays and Strings 
+// Matt Harrison
 //
-// This is my naive implementation of a hashmap in C using a struct and arrays
+// This is my naive implementation of a hashmap in C using a struct and arrays.
+// The Hashmap is a struct containing two arrays, one for keys and one for values
+// The indices of each are used to find the partner. New elements are always added
+// on the end of the hashmap's arrays
 //
 // Features:
 //
@@ -9,9 +13,7 @@
 //
 // Limitations:
 //
-// * Elements can only be added never removed
-// * No detection of collisions
-// * Can't replace a key's value
+// * Elements can only be added, never removed
 
 #include <stdlib.h>
 #include <string.h>

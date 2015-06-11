@@ -1,10 +1,14 @@
+// Cracking the Coding Interview
+// Chapter 1 - Arrays and Strings 
+// Matt Harrison
+
 #include "hashmap_simple.h"
 
 // Hashmaps are created with this initial size
-#define HASHMAP_INITIAL_SIZE 10
+#define HASHMAP_INITIAL_SIZE 100
 // Each time a hashmap needs more space, it is increased
 // by this much
-#define HASHMAP_RESIZE_INCREMENT 10
+#define HASHMAP_RESIZE_INCREMENT 100
 
 HashmapSimple* HashmapSimpleNew() {
     
