@@ -30,10 +30,6 @@ HashmapSimple* HashmapSimpleNew();
 
 void HashmapSimpleSet(HashmapSimple* hashmap, char* key, char* value);
 
-// Gets the index for a hash key
-
-int HashmapSimpleIndexForKey(HashmapSimple* hashmap, char * key);
-
 // Retrieves the value for a key from the hashmap
 
 char* HashmapSimpleGet(HashmapSimple* hashmap, char* key);
