@@ -1,3 +1,7 @@
+// Cracking the Coding Interview
+// Chapter 1 - Arrays and Strings 
+// Matt Harrison
+
 #include "hashmap_linked_list.h"
 
 HashmapLinkedList* HashmapLinkedListNew() {
