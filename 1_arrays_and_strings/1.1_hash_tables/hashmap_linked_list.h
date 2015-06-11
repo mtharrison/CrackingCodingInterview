@@ -7,13 +7,13 @@
 #include <stdio.h>
 
 typedef struct HashmapLinkedListPair {
-	struct HashmapLinkedListPair* prev;
+	struct HashmapLinkedListPair* next;
 	char* key;
 	char* value;
 } HashmapLinkedListPair;
 
 typedef struct {
-	HashmapLinkedListPair* last;
+	HashmapLinkedListPair* first;
 } HashmapLinkedList;
 
 HashmapLinkedList* HashmapLinkedListNew();

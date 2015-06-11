@@ -14,22 +14,22 @@ void HashmapLinkedListSet(HashmapLinkedList* hashmap, char* key, char* value) {
 
 	// Is this the first element
 
-	if (hashmap->last != NULL) {
-		pair->prev = hashmap->last;
+	if (hashmap->first != NULL) {
+		pair->next = hashmap->first;
 	}
 
-	hashmap->last = pair;
+	hashmap->first = pair;
 }
 
 char* HashmapLinkedListGet(HashmapLinkedList* hashmap, char* key) {
 
-	HashmapLinkedListPair* next = hashmap->last;
+	HashmapLinkedListPair* next = hashmap->first;
 
 	while(next != NULL) {
 		if (strcmp(next->key, key) == 0) {
 			return next->value;
 		}
-		next = next->prev;
+		next = next->next;
 	}
 
 	return NULL;
