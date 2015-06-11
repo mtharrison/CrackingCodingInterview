@@ -1,2 +1,2 @@
 all:
-	gcc -o prog main.c
+	gcc -o prog main.c hashmap_simple.c
