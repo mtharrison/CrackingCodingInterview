@@ -1,38 +1,82 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-static char* keys[10];
-static char* values[10];
-static int hashmapPtr = 0;
+#define HASHMAP_MAX_SIZE 10
 
-void HashmapAdd(char* key, char* value) {
-	keys[hashmapPtr] = key;
-	values[hashmapPtr] = value;
+typedef struct {
+    char* keys[HASHMAP_MAX_SIZE];
+    char* values[HASHMAP_MAX_SIZE];
+    int ptr;
+} Hashmap;
 
-	hashmapPtr++;
+Hashmap* HashmapNew() {
+    
+    Hashmap* hashmap = malloc(sizeof(Hashmap));
+    hashmap->ptr = 0;
+    
+    return hashmap;
 }
 
-char* HashmapGet(char* key) {
-	for (int i = 0; i < 10; ++i)
-	{
-		if (NULL != keys[i] && strcmp(key, keys[i]) == 0) {
-			return values[i];
-		}
-	}
 
-	return NULL;
+void HashmapAdd(Hashmap* hashmap, char* key, char* value) {
+    
+    hashmap->keys[hashmap->ptr] = key;
+    hashmap->values[hashmap->ptr] = value;
+    hashmap->ptr++;
+}
+
+int HashmapIndexForKey(Hashmap* hashmap, char * key) {
+    
+    for (int i = 0; i < HASHMAP_MAX_SIZE; ++i)
+    {
+        if (NULL != hashmap->keys[i] && strcmp(key, hashmap->keys[i]) == 0) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+void HashmapRemove(Hashmap* hashmap, char* key) {
+    
+    int i = HashmapIndexForKey(hashmap, key);
+    
+    if (i > -1) {
+        hashmap->keys[i] = NULL;
+        hashmap->values[i] = NULL;
+    }
+}
+
+char* HashmapGet(Hashmap* hashmap, char* key) {
+    
+    int i = HashmapIndexForKey(hashmap, key);
+    
+    if (i == -1) {
+        return NULL;
+    }
+    
+    return hashmap->values[i];
 }
 
 int main(int argc, char const *argv[])
 {
-	HashmapAdd("NameXXXXXX", "Matt");
-	HashmapAdd("BirthYearX", "1986");
+    
+    Hashmap* hashmap = HashmapNew();
+    
+    HashmapAdd(hashmap, "Name", "Matt");
+    HashmapAdd(hashmap, "BirthYear", "1986");
+    
+    char* name = HashmapGet(hashmap, "Name");
+    char* birthYear = HashmapGet(hashmap, "BirthYear");
 
-	char* name = HashmapGet("Name");
-	char* birthYear = HashmapGet("BirthYear");
-
-	printf("%s\n", name);
-	printf("%s\n", birthYear);
-
-	return 0;
+    printf("%s\n", name);
+    printf("%s\n", birthYear);
+    
+    HashmapRemove(hashmap, "Name");
+    
+    name = HashmapGet(hashmap, "Name");
+    printf("%s\n", name);
+    
+    return 0;
 }
