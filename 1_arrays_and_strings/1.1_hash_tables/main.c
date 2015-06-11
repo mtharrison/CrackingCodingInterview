@@ -10,6 +10,14 @@ int main(int argc, char const *argv[])
     
     HashmapSimpleSet(hashmap, "Name", "Matt");
     HashmapSimpleSet(hashmap, "BirthYear", "1986");
+    HashmapSimpleSet(hashmap, "Name", "Matt");
+    HashmapSimpleSet(hashmap, "BirthYear", "1986");
+    HashmapSimpleSet(hashmap, "Name", "Matt");
+    HashmapSimpleSet(hashmap, "BirthYear", "1986");
+    HashmapSimpleSet(hashmap, "Name", "Matt");
+    HashmapSimpleSet(hashmap, "BirthYear", "1986");
+    HashmapSimpleSet(hashmap, "Name", "Matt");
+    HashmapSimpleSet(hashmap, "BirthYear", "1986");
 
     printf("%s\n", HashmapSimpleGet(hashmap, "Name"));
     printf("%s\n", HashmapSimpleGet(hashmap, "BirthYear"));
