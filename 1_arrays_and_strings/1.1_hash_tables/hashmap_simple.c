@@ -18,13 +18,46 @@ HashmapSimple* HashmapSimpleNew() {
     return hashmap;
 }
 
+// Increases the hashmap's capacity by HASHMAP_RESIZE_INCREMENT
+
+void HashmapResize(HashmapSimple* hashmap) {
+
+    // Make some new bigger arrays
+
+    int newSize = hashmap->size + HASHMAP_RESIZE_INCREMENT;
+    char** newKeys = malloc(sizeof(char* [newSize]));
+    char** newVals = malloc(sizeof(char* [newSize]));
+
+    // Copy the memory over from the old arrays
+
+    memcpy(newKeys, hashmap->keys, sizeof(char* [hashmap->size]));
+    memcpy(newVals, hashmap->values, sizeof(char* [hashmap->size]));
+
+    // Free the memory from the old arrays
+
+    free(hashmap->keys);
+    free(hashmap->values);
+
+    // Update the struct with the new values
+
+    hashmap->keys = newKeys;
+    hashmap->values = newVals;
+    hashmap->size = newSize;
+}
+
 // Adds a key => value pair to the hashmap
 
 void HashmapSimpleSet(HashmapSimple* hashmap, char* key, char* value) {
-    
+
     hashmap->keys[hashmap->ptr] = key;
     hashmap->values[hashmap->ptr] = value;
     hashmap->ptr++;
+
+    // If the hashmap is full, resize it up
+
+    if (hashmap->ptr == hashmap->size) {
+        HashmapResize(hashmap);
+    }
 }
 
 // Gets the index for a hash key

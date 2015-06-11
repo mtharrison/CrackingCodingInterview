@@ -3,24 +3,16 @@
 
 int main(int argc, char const *argv[])
 {
-
 	// HashmapSimple
 
     HashmapSimple* hashmap = HashmapSimpleNew();
     
-    HashmapSimpleSet(hashmap, "Name", "Matt");
-    HashmapSimpleSet(hashmap, "BirthYear", "1986");
-    HashmapSimpleSet(hashmap, "Name", "Matt");
-    HashmapSimpleSet(hashmap, "BirthYear", "1986");
-    HashmapSimpleSet(hashmap, "Name", "Matt");
-    HashmapSimpleSet(hashmap, "BirthYear", "1986");
-    HashmapSimpleSet(hashmap, "Name", "Matt");
-    HashmapSimpleSet(hashmap, "BirthYear", "1986");
-    HashmapSimpleSet(hashmap, "Name", "Matt");
-    HashmapSimpleSet(hashmap, "BirthYear", "1986");
+    HashmapSimpleSet(hashmap, "First Name", "Matt");
+    HashmapSimpleSet(hashmap, "Last Name", "Harrison");
+    HashmapSimpleSet(hashmap, "First Name", "Matthew"); // Should override
 
-    printf("%s\n", HashmapSimpleGet(hashmap, "Name"));
-    printf("%s\n", HashmapSimpleGet(hashmap, "BirthYear"));
+    printf("%s\n", HashmapSimpleGet(hashmap, "First Name"));
+    printf("%s\n", HashmapSimpleGet(hashmap, "Last Name"));
 
     free(hashmap);
     
